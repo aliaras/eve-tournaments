@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "flask-esipy-example"
+version = "0.1.0"
+description = ""
+authors = ["Chris Danis <cdanis@gmail.com>"]
+readme = "README.md"
+packages = [{include = "flask_esipy_example"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^2.3.3"
+flask-login = "^0.6.2"
+flask-migrate = "^4.0.4"
+sqlalchemy = "^2.0.20"
+simplejson = "^3.19.1"
+esipy = {git = "https://github.com/cdanis/EsiPy"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
