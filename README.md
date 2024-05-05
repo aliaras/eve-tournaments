@@ -1,6 +1,6 @@
-# Flask + EsiPy Example
+# EVE Tournament Organizer
 
-This project is a small ready to work example on how to use EsiPy with Flask.
+Building a web application to organize EVE Tournaments, starting with solo queue 
 
 The following libraries are used:
 * Flask _for the webapp part_
@@ -19,7 +19,7 @@ __Also, this example is made with Python 2.7, it might works with Python 3, but 
 
 1. Clone the repository on your system
 ```shell
-git clone https://github.com/Kyria/flask-esipy-example.git
+git clone https://github.com/aliaras/eve-tournaments.git
 ```
 
 2. Create a virtualenv
@@ -48,18 +48,20 @@ export FLASK_APP=app.py
 4. Fill all the fields
 
 __Requirements:__
-* For the scope, you will need `esi-wallet.read_character_wallet.v1` for this example
+* For the scope, you will need the publicData scope
 * The callback URL must be `http://<SOME_IP_OR_DOMAIN>:<SOME_PORT>/sso/callback`
 
 
 ## APP Configuration
 
-1. Copy and rename the `config.dist` in `config.py`
+1. Copy and rename the `config.dist` to `config.py`
 2. Edit it.
 
 ```python
 PORT = <SOME_PORT>
-HOST = '<SOME_IP_OR_DOMAIN>'
+HOST = '<THE_HOST_YOURE_RUNNING_ON>'
+# If using a reverse-proxy to direct traffic, fill in the proxy's hostname here
+EXTERNAL_HOST = '<HOST_FROM_BROWSER>'
 
 SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'  # this is your database connection informations http://docs.sqlalchemy.org/en/latest/core/engines.html#database-urls
 
@@ -87,5 +89,5 @@ python app.py
 > * Debugger PIN: 206-933-487<br>
 > * Running on http://localhost:5015/ (Press CTRL+C to quit)
 
-And now you can connect to [http://localhost:5015/](http://localhost:5015/) to see it working (if you kept default configs)
+And now you can connect to [http://localhost:5015/](http://localhost:5015/) to see it working (if you kept default configs). I recommend caddy as a reverse proxy if you need one, it's very easy.
 

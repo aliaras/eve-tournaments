@@ -58,6 +58,79 @@ login_manager.login_view = 'login'
 # -----------------------------------------------------------------------
 # Database models
 # -----------------------------------------------------------------------
+class Tournament(db.Model):
+    tournament_id = db.Column(
+            db.Integer,
+            primary_key=True,
+            )
+    tournament_name = db.Column(db.String(255))
+    tournament_description = db.Column(db.String(1024))
+    tournament_url = db.Column(db.String(255))
+    tournament_type = db.Column(db.String(40))
+    competitors = db.relationship('Competitor', backref='tournament', lazy=True)
+    team_size = db.Column(db.Integer)
+
+class Team(db.Model):
+    team_id = db.Column(
+            db.Integer,
+            primary_key=True,
+            )
+    captain = db.Column(db.BigInteger, db.ForeignKey('User.character_id'), nullable=False)
+    name = db.Column(db.String(255))
+    members = db.relationship('Character', backref='team', lazy=True)
+
+
+class Competitor(db.Model):
+    team_id = db.Column(db.Integer, db.ForeignKey('Team.team_id'), nullable=False)
+    tournament_id = db.Column(db.Integer, db.ForeignKey('Tournament.tournament_id'), nullable=False)
+    wins = db.Column(db.Integer)
+    losses = db.Column(db.Integer)
+    matches = db.Column(db.Integer)
+
+soloq_lobby = db.Table("soloq_lobby", 
+                      db.Column("team_id", db.ForeignKey('Team.team_id'), primary_key=True),
+                      db.Column("tournament_id", db.ForeignKey('Tournament.tournament_id'), nullable=False)
+                       )                                
+
+class SoloQueue(Tournament):
+
+   def open_lobby(self):
+   
+   def create_match(self):
+       #Get all competitors in the tournament
+       lobby = Competitor.query.filter(Competitor.tournament_id == self.tournament_id)
+       max_matches = Competitor.query(func.max(Competitor.matches))
+       this_match_players = []
+       # Turn the list of competitors into a dict of competitors grouped by number of matches played
+       by_matches = {}
+       for elem in lobby:
+           try:
+               by_matches[elem.matches].append(elem)
+           except KeyError:
+               by_matches[elem.matches] = [elem]
+
+       #Starting with the list of players who have played the fewest matches, shuffle the list of 
+       #players at a given match count, take the first 2*self.team_size (aka enough to make a match)
+       #then keep going if we don't have a full match yet
+       for i in range(max_matches):
+           if(len(this_match_players) < 2*self.team_size):
+               random.shuffle(by_matches[i])
+               this_match_players = this_match_players, by_matches[i][0:2*self.team_size - len(this_match_players)]
+
+       #Shuffle our list of players again and return it. The caller will use the first team_size elements as red team,
+       #and the remainder as blue team.
+       return random.shuffle(this_match_players)
+
+    
+class Character(db.Model):
+    character_id = db.Column(
+        db.BigInteger,
+        primary_key=True,
+        autoincrement=False
+    )
+    user_id = db.Column(db.BigInteger, db.ForeignKey('User.id'), nullable=True)
+    character_name = db.Column(db.String(200))
+
 class User(db.Model, UserMixin):
     # our ID is the character ID from EVE API
     character_id = db.Column(
@@ -66,7 +139,6 @@ class User(db.Model, UserMixin):
         autoincrement=False
     )
     character_owner_hash = db.Column(db.String(255))
-    character_name = db.Column(db.String(200))
 
     # SSO Token stuff
     access_token = db.Column(db.String(4096))
@@ -151,7 +223,7 @@ def login():
     session['token'] = token
     return redirect(esisecurity.get_auth_uri(
         state=token,
-        scopes=['esi-wallet.read_character_wallet.v1']
+        scopes=['publicData']
     ))
 
 
@@ -187,7 +259,15 @@ def callback():
     if current_user.is_authenticated:
         logout_user()
 
-    # now we check in database, if the user exists
+    # Check to see if we already have a record for this character
+    try:
+        character = Character.query.filter(Character.character_id == cdata['sub'].split(':')[2],
+        ).one()
+    except NoResultFound:
+        character = Character()
+        character.character_id = cdata['sub'].split(':')[2]
+
+    # now check to see if we have a record for this user
     # actually we'd have to also check with character_owner_hash, to be
     # sure the owner is still the same, but that's an example only...
     try:
@@ -198,14 +278,16 @@ def callback():
     except NoResultFound:
         user = User()
         user.character_id = cdata['sub'].split(':')[2]
+        character.user_id = user.character_id
 
     user.character_owner_hash = cdata['owner']
-    user.character_name = cdata['name']
+    character.character_name = cdata['name']
     user.update_token(auth_response)
 
-    # now the user is ready, so update/create it and log the user
+    # now the user is ready, so update/create it and character if needed and log the user
     try:
         db.session.merge(user)
+        db.session.merge(character)
         db.session.commit()
 
         login_user(user)
@@ -224,7 +306,6 @@ def callback():
 # -----------------------------------------------------------------------
 @app.route('/')
 def index():
-    wallet = None
 
     # if the user is authed, get the wallet content !
     if current_user.is_authenticated:
@@ -232,13 +313,8 @@ def index():
         # if the access token need some update
         esisecurity.update_token(current_user.get_sso_data())
 
-        op = esiapp.op['get_characters_character_id_wallet'](
-            character_id=current_user.character_id
-        )
-        wallet = esiclient.request(op)
 
     return render_template('base.html', **{
-        'wallet': wallet,
     })
 
 

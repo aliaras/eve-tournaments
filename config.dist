@@ -5,9 +5,11 @@ import datetime
 # Application configurations
 # ------------------------------------------------------
 DEBUG = True
-SECRET_KEY = 'YouNeedToChangeThisToBeSecure!'
+SECRET_KEY = 'CHANGEME'
 PORT = 5015
 HOST = 'localhost'
+# Set this to the proxy host if using a reverse proxy to direct traffic
+EXTERNAL_HOST = 'eve-tournaments.space'
 
 # -----------------------------------------------------
 # SQL Alchemy configs
@@ -19,10 +21,10 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
 # -----------------------------------------------------
 ESI_DATASOURCE = 'tranquility'  # Change it to 'singularity' to use the test server
 ESI_SWAGGER_JSON = 'https://esi.tech.ccp.is/latest/swagger.json?datasource=%s' % ESI_DATASOURCE
-ESI_SECRET_KEY = ''  # your secret key
-ESI_CLIENT_ID = ''  # your client ID
-ESI_CALLBACK = 'http://%s:%d/sso/callback' % (HOST, PORT)  # the callback URI you gave CCP
-ESI_USER_AGENT = 'esipy-flask-example'
+ESI_SECRET_KEY = '9V4EkCk6AgNiIICHsl2eYUmS0cssTFbdvOpk4oxX'  # your secret key
+ESI_CLIENT_ID = 'dac7d05428e94125a6e56ec912a3ca37'  # your client ID
+ESI_CALLBACK = 'https://%s/sso/callback' % (EXTERNAL_HOST)  # the callback URI you gave CCP
+ESI_USER_AGENT = 'eve-tournaments'
 
 
 # ------------------------------------------------------
