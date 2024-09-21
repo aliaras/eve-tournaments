@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: f39c1f83daaa
+Revision ID: 6482a3250a82
 Revises: 
-Create Date: 2024-09-21 14:20:32.352022
+Create Date: 2024-09-21 21:57:21.611750
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f39c1f83daaa'
+revision = '6482a3250a82'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -39,6 +39,7 @@ def upgrade():
     sa.Column('tournament_description', sa.String(length=1024), nullable=True),
     sa.Column('tournament_url', sa.String(length=255), nullable=True),
     sa.Column('tournament_type', sa.String(length=40), nullable=True),
+    sa.Column('active', sa.Integer(), nullable=True),
     sa.Column('current_match_id', sa.Integer(), nullable=True),
     sa.Column('team_size', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['current_match_id'], ['match.match_id'], ),
@@ -47,6 +48,7 @@ def upgrade():
     op.create_table('user',
     sa.Column('character_id', sa.BigInteger(), autoincrement=False, nullable=False),
     sa.Column('character_owner_hash', sa.String(length=255), nullable=True),
+    sa.Column('character_name', sa.String(length=200), nullable=True),
     sa.Column('access_token', sa.String(length=4096), nullable=True),
     sa.Column('access_token_expires', sa.DateTime(), nullable=True),
     sa.Column('refresh_token', sa.String(length=100), nullable=True),

@@ -60,3 +60,1239 @@ jinja2.exceptions.TemplateSyntaxError: unexpected '}', expected ')'
  * Debugger pin code: 138-903-892
 127.0.0.1 - - [21/Sep/2024 14:48:49] "GET /?__debugger__=yes&cmd=printpin&s=RmB0IEneS9IArOGuFaJw HTTP/1.1" 200 -
 127.0.0.1 - - [21/Sep/2024 14:49:02] "GET /?__debugger__=yes&cmd=pinauth&pin=138-903-892&s=RmB0IEneS9IArOGuFaJw HTTP/1.1" 200 -
+ * Serving Flask app 'app'
+ * Debug mode: on
+Address already in use
+Port 5015 is in use by another program. Either identify and stop that program, or start the server with a different port.
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:5015
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+127.0.0.1 - - [21/Sep/2024 19:31:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:31:46] "[32mGET /sso/login HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 19:31:50] "[35m[1mGET /sso/callback?code=cjeUV6WAI0OhkYaefb_WNQ&state=d971801259e55ec4cd264de9709bb8d77e40d8f7a1e7db25c03b7ce237aefeda HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 394, in callback
+    character = Character.query.filter(Character.character_id == cdata['sub'].split(':')[2],
+NameError: name 'Character' is not defined
+127.0.0.1 - - [21/Sep/2024 19:31:50] "GET /sso/callback?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:31:50] "GET /sso/callback?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:31:50] "GET /sso/callback?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:31:50] "[36mGET /sso/callback?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:5015
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+127.0.0.1 - - [21/Sep/2024 19:34:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:35:00] "[32mGET /sso/login HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 19:35:04] "[32mGET /sso/callback?code=vw-R60-1fEiXJrZzm4zraQ&state=71fe8a66ac2dd4760698a1aa1cda3db5783d2c360b3ee420d18fb5df6ec3069b HTTP/1.1[0m" 302 -
+/disk1/data/git/eve-tournaments/app.py:274: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 19:35:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:35:10] "[35m[1mGET /demo HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 452, in demo
+    tournaments = get_current_tournaments()
+  File "/disk1/data/git/eve-tournaments/app.py", line 260, in get_current_tournaments
+    return(Tournament.db.Query.filter(Tournament.active==1).all())
+AttributeError: type object 'Tournament' has no attribute 'db'
+127.0.0.1 - - [21/Sep/2024 19:35:10] "GET /demo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:35:10] "GET /demo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:35:10] "GET /demo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:35:10] "[36mGET /demo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * To enable the debugger you need to enter the security pin:
+ * Debugger pin code: 477-324-307
+127.0.0.1 - - [21/Sep/2024 19:36:27] "GET /demo?__debugger__=yes&cmd=printpin&s=IxmcVVvpuGq3AvaRaIrM HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:36:35] "GET /demo?__debugger__=yes&cmd=pinauth&pin=477-324-307&s=IxmcVVvpuGq3AvaRaIrM HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:36:48] "GET /demo?&__debugger__=yes&cmd=Tournament.query.filter(Tournament.active%3D%3D1).all()&frm=139936282941024&s=IxmcVVvpuGq3AvaRaIrM HTTP/1.1" 200 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:274: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 19:39:23] "[35m[1mGET /demo HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 453, in demo
+    return render_template('demo.html', current_tournaments=tournaments)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/loaders.py", line 137, in load
+    code = environment.compile(source, name, filename)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/disk1/data/git/eve-tournaments/templates/demo.html", line 81, in template
+    {% for let t in current_tournaments %}
+jinja2.exceptions.TemplateSyntaxError: expected token 'in', got 't'
+127.0.0.1 - - [21/Sep/2024 19:39:23] "[36mGET /demo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 19:39:23] "[36mGET /demo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 19:39:23] "[36mGET /demo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 19:40:05] "[35m[1mGET /demo HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 453, in demo
+    return render_template('demo.html', current_tournaments=tournaments)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/disk1/data/git/eve-tournaments/templates/demo.html", line 66, in top-level template code
+    <title>{{ tournament.tournament_name }}</title>
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'tournament' is undefined
+127.0.0.1 - - [21/Sep/2024 19:40:05] "[36mGET /demo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 19:40:05] "[36mGET /demo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 19:40:05] "[36mGET /demo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 19:40:46] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:40:47] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 19:42:43] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:42:43] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 19:44:05] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:44:05] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 19:44:06] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 19:44:06] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 20:15:39] "[33mGET /.env HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 20:52:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 20:52:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 20:53:23] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 20:53:23] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 20:53:26] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 20:53:26] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 20:54:20] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 20:54:20] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 20:55:12] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 20:55:12] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 20:55:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 20:55:55] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 20:55:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 20:55:57] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 20:55:57] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 20:56:16] "[35m[1mGET /demo HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 453, in demo
+    return render_template('demo.html', current_tournaments=tournaments)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/disk1/data/git/eve-tournaments/templates/demo.html", line 82, in top-level template code
+    <a href="{{ url_for('create_tournament') }}">Create Tournament</a>
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'create_tournament'. Did you mean 'get_tournament' instead?
+127.0.0.1 - - [21/Sep/2024 20:56:16] "[36mGET /demo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 20:56:16] "[36mGET /demo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 20:56:16] "[36mGET /demo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+  File "/disk1/data/git/eve-tournaments/app.py", line 333
+    def create_tournament:
+                         ^
+SyntaxError: invalid syntax
+  File "/disk1/data/git/eve-tournaments/app.py", line 337
+    tournament = SoloQueue.query.filter(SoloQueue.tournament_description="Demo solo queue", SoloQueue.active=1).first()
+                                        ^
+SyntaxError: expression cannot contain assignment, perhaps you meant "=="?
+  File "/disk1/data/git/eve-tournaments/app.py", line 337
+    tournament = SoloQueue.query.filter(SoloQueue.tournament_description=="Demo solo queue", SoloQueue.active=1).first()
+                                                                                             ^
+SyntaxError: expression cannot contain assignment, perhaps you meant "=="?
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:5015
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:274: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:02:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:02:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:02:27] "[33mGET /debug HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:02:27] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:02:28] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:02:30] "GET /create_tournament HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:02:30] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:02:33] "[35m[1mGET /join_lobby/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 883, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 902, in finalize_request
+    response = self.make_response(rv)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1174, in make_response
+    raise TypeError(
+TypeError: The view function for 'join_tournament_lobby' did not return a valid response. The function either returned None or ended without a return statement.
+127.0.0.1 - - [21/Sep/2024 21:02:33] "GET /join_lobby/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:02:33] "GET /join_lobby/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:02:33] "GET /join_lobby/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:02:33] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:274: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:04:49] "[35m[1mGET /join_lobby/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 314, in join_tournament_lobby
+    return redirect(url_for("/tournament/"+str(tournament.tournament_id)))
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/helpers.py", line 220, in url_for
+    return current_app.url_for(
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/tournament/1'. Did you mean 'get_tournament' instead?
+127.0.0.1 - - [21/Sep/2024 21:04:49] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:04:49] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:04:49] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[35m[1mGET /join_lobby/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 314, in join_tournament_lobby
+    return redirect(url_for("/tournament/"+str(tournament.tournament_id)))
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/helpers.py", line 220, in url_for
+    return current_app.url_for(
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/tournament/1'. Did you mean 'get_tournament' instead?
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:04:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[35m[1mGET /demo HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 457, in demo
+    return render_template('demo.html', current_tournaments=tournaments)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/disk1/data/git/eve-tournaments/templates/demo.html", line 89, in top-level template code
+    <a href="{{ url_for('tournament', tid=t.tournament_id) }}">Open {{t.tournament_name}}</a>
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'tournament' with values ['tid']. Did you mean 'get_tournament' instead?
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[36mGET /demo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[36mGET /demo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:04:52] "[36mGET /demo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:05:45] "[35m[1mGET /demo HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 457, in demo
+    return render_template('demo.html', current_tournaments=tournaments)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/disk1/data/git/eve-tournaments/templates/demo.html", line 89, in top-level template code
+    <a href="{{ url_for('/tournament', tid=t.tournament_id) }}">Open {{t.tournament_name}}</a>
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/tournament' with values ['tid']. Did you mean 'get_tournament' instead?
+127.0.0.1 - - [21/Sep/2024 21:05:45] "[36mGET /demo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:05:45] "[36mGET /demo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:05:45] "[36mGET /demo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:274: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:07:39] "[35m[1mGET /demo HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 457, in demo
+    return render_template('demo.html', current_tournaments=tournaments)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/disk1/data/git/eve-tournaments/templates/demo.html", line 89, in top-level template code
+    <a href="{{ url_for('/tournament', tid=t.tournament_id) }}">Open {{t.tournament_name}}</a>
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/tournament' with values ['tid']. Did you mean 'tournament' instead?
+127.0.0.1 - - [21/Sep/2024 21:07:39] "[36mGET /demo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:07:39] "[36mGET /demo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:07:39] "[36mGET /demo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:07:40] "[35m[1mGET /demo HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 457, in demo
+    return render_template('demo.html', current_tournaments=tournaments)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/disk1/data/git/eve-tournaments/templates/demo.html", line 89, in top-level template code
+    <a href="{{ url_for('/tournament', tid=t.tournament_id) }}">Open {{t.tournament_name}}</a>
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/tournament' with values ['tid']. Did you mean 'tournament' instead?
+127.0.0.1 - - [21/Sep/2024 21:07:40] "[36mGET /demo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:07:40] "[36mGET /demo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:07:40] "[36mGET /demo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:274: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:11:02] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:11:02] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:11:04] "[35m[1mGET /tournament/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 306, in display_tournament
+    players = [Display_Player(name=get_char_name(p.character_id), matches=p.matches, wins=p.wins) for p in tournament.players]
+  File "/disk1/data/git/eve-tournaments/app.py", line 306, in <listcomp>
+    players = [Display_Player(name=get_char_name(p.character_id), matches=p.matches, wins=p.wins) for p in tournament.players]
+  File "/disk1/data/git/eve-tournaments/app.py", line 266, in get_char_name
+    return char_info.name
+AttributeError: 'Response' object has no attribute 'name'
+127.0.0.1 - - [21/Sep/2024 21:11:04] "GET /tournament/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:11:04] "GET /tournament/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:11:04] "GET /tournament/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:11:04] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:20:12] "GET /tournament/1?&__debugger__=yes&cmd=dump(op)&frm=140105746405520&s=ESoXZPmUl13u3DnF4ZPo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:20:12] "GET /tournament/1?__debugger__=yes&cmd=resource&f=more.png HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:20:26] "GET /tournament/1?&__debugger__=yes&cmd=dump(char_info)&frm=140105746405520&s=ESoXZPmUl13u3DnF4ZPo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:20:48] "GET /tournament/1?__debugger__=yes&cmd=resource&f=less.png HTTP/1.1" 200 -
+/disk1/data/git/eve-tournaments/app.py:274: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:20:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:22:57] "GET /tournament/1?&__debugger__=yes&cmd=char_info.data.name&frm=140105746405520&s=ESoXZPmUl13u3DnF4ZPo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:25:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:25:05] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:25:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:25:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:5015
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:285: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:42:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:42:58] "[32mGET /sso/login HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:43:02] "[32mGET /sso/callback?code=jKmlgaxqok-2oX94zuf_uw&state=9008384832f1bdf9fe3350ade05994b89b2c9bfd1e7587ed8cf890d8cd1aef2a HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:43:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:43:07] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:43:07] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:43:09] "[35m[1mGET /create_tournament HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 347, in create_tournament
+    return redirect(url_for("/tournament/"+str(tournament.tournament_id)))
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/helpers.py", line 220, in url_for
+    return current_app.url_for(
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/tournament/1'. Did you mean 'create_tournament' instead?
+127.0.0.1 - - [21/Sep/2024 21:43:09] "GET /create_tournament?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:43:09] "GET /create_tournament?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:43:09] "GET /create_tournament?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:43:09] "[36mGET /create_tournament?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+127.0.0.1 - - [21/Sep/2024 21:44:23] "[35m[1mGET /create_tournament HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 347, in create_tournament
+    return redirect(url_for("display_tournament"+str(tournament.tournament_id)))
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/helpers.py", line 220, in url_for
+    return current_app.url_for(
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'display_tournament1'. Did you mean 'display_tournament' instead?
+127.0.0.1 - - [21/Sep/2024 21:44:23] "[36mGET /create_tournament?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:44:23] "[36mGET /create_tournament?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:44:23] "[36mGET /create_tournament?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+/disk1/data/git/eve-tournaments/app.py:285: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:44:31] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:44:31] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:44:33] "[35m[1mGET /tournament/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 318, in display_tournament
+    matches = Display_Match(red_team=[get_char_name(p) for p in tournament.current_match.red_team.split(',')], red_team_name=tournament.current_match.red_team_name, blue_team=[get_char_name(p) for p in tournament.current_match.blue_team.split(',')], blue_team_name=tournament.current_match.blue_team_name)
+AttributeError: 'NoneType' object has no attribute 'red_team'
+127.0.0.1 - - [21/Sep/2024 21:44:33] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:44:33] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:44:33] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:44:58] "[35m[1mGET /tournament/2 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 318, in display_tournament
+    matches = Display_Match(red_team=[get_char_name(p) for p in tournament.current_match.red_team.split(',')], red_team_name=tournament.current_match.red_team_name, blue_team=[get_char_name(p) for p in tournament.current_match.blue_team.split(',')], blue_team_name=tournament.current_match.blue_team_name)
+AttributeError: 'NoneType' object has no attribute 'red_team'
+127.0.0.1 - - [21/Sep/2024 21:44:58] "GET /tournament/2?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:44:58] "GET /tournament/2?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:44:58] "GET /tournament/2?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:44:58] "[36mGET /tournament/2?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:45:02] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:45:02] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+127.0.0.1 - - [21/Sep/2024 21:46:14] "[35m[1mGET /tournament/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 318, in display_tournament
+    matches = Display_Match(red_team=[get_char_name(p) for p in tournament.current_match.red_team.split(',')], red_team_name=tournament.current_match.red_team_name, blue_team=[get_char_name(p) for p in tournament.current_match.blue_team.split(',')], blue_team_name=tournament.current_match.blue_team_name)
+AttributeError: 'NoneType' object has no attribute 'red_team'
+127.0.0.1 - - [21/Sep/2024 21:46:15] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:46:15] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:46:15] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+127.0.0.1 - - [21/Sep/2024 21:46:55] "[35m[1mGET /tournament/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 320, in display_tournament
+    return render_template("tournament.html",tournament=tournament, players=players, match=matches)
+UnboundLocalError: local variable 'matches' referenced before assignment
+127.0.0.1 - - [21/Sep/2024 21:46:55] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:46:55] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:46:56] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:285: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:47:41] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:47:41] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:47:54] "[35m[1mGET /join_lobby/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 328, in join_lobby
+    return redirect(url_for("display_tournament"+str(tournament.tournament_id)))
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/helpers.py", line 220, in url_for
+    return current_app.url_for(
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'display_tournament1'. Did you mean 'display_tournament' instead?
+127.0.0.1 - - [21/Sep/2024 21:47:54] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:47:54] "[36mGET /join_lobby/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:47:54] "GET /join_lobby/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:285: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:49:21] "[32mGET /join_lobby/1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:49:21] "[35m[1mGET /tournament/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 317, in display_tournament
+    players = [Display_Player(name=get_char_name(p.character_id), matches=p.matches, wins=p.wins) for p in tournament.players]
+  File "/disk1/data/git/eve-tournaments/app.py", line 317, in <listcomp>
+    players = [Display_Player(name=get_char_name(p.character_id), matches=p.matches, wins=p.wins) for p in tournament.players]
+TypeError: Display_Player() takes no arguments
+127.0.0.1 - - [21/Sep/2024 21:49:22] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:49:22] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:49:22] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+  File "/disk1/data/git/eve-tournaments/app.py", line 249
+    def __init__(self, name, matches, wins)
+                                           ^
+SyntaxError: invalid syntax
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:5015
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:287: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:52:41] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:52:41] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:52:44] "[32mGET /join_lobby/1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:52:44] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:52:44] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:52:46] "[32mGET /fill_lobby/1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:52:49] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:52:49] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:52:51] "[32mGET /generate_match/1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:52:51] "[35m[1mGET /tournament/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 321, in display_tournament
+    matches = Display_Match(red_team=[get_char_name(p) for p in tournament.current_match.red_team.split(',')], red_team_name=tournament.current_match.red_team_name, blue_team=[get_char_name(p) for p in tournament.current_match.blue_team.split(',')], blue_team_name=tournament.current_match.blue_team_name)
+AttributeError: 'Match' object has no attribute 'red_team'
+127.0.0.1 - - [21/Sep/2024 21:52:51] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:52:51] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:52:51] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:53:10] "GET /tournament/1?&__debugger__=yes&cmd=dump(players)&frm=140239253517584&s=iRt2LGrWJmmfAM3v9wdo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:53:10] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=more.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:53:20] "GET /tournament/1?&__debugger__=yes&cmd=players[0]&frm=140239253517584&s=iRt2LGrWJmmfAM3v9wdo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:53:23] "GET /tournament/1?&__debugger__=yes&cmd=players[0].name&frm=140239253517584&s=iRt2LGrWJmmfAM3v9wdo HTTP/1.1" 200 -
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:5015
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:297: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 21:58:17] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:58:18] "[32mGET /sso/login HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:58:22] "[32mGET /sso/callback?code=rfB4siNkAEa34F8eM9Bl8Q&state=3498feb5ed86ad1ff3fb47edf8c2bb3b0e690fbbcfe1bdcffa087bc0d316ea53 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:58:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:58:26] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:58:26] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:58:28] "[32mGET /create_tournament HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:58:28] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:58:28] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:58:33] "[32mGET /join_lobby/1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:58:33] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:58:33] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:58:36] "[32mGET /fill_lobby/1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:58:38] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:58:38] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 21:58:41] "[32mGET /generate_match/1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 21:58:41] "[35m[1mGET /tournament/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 331, in display_tournament
+    matches = Display_Match(red_team=[get_char_name(p) for p in tournament.current_match.red_team.split(',')], red_team_name=tournament.current_match.red_team_name, blue_team=[get_char_name(p) for p in tournament.current_match.blue_team.split(',')], blue_team_name=tournament.current_match.blue_team_name)
+AttributeError: 'Match' object has no attribute 'red_team'
+127.0.0.1 - - [21/Sep/2024 21:58:41] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:58:41] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:58:41] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 21:59:12] "GET /tournament/1?&__debugger__=yes&cmd=tournament.current_match&frm=140524909013920&s=7McvS5EUv09EF7E8DH0j HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:59:18] "GET /tournament/1?&__debugger__=yes&cmd=dump(tournament.current_match)&frm=140524909013920&s=7McvS5EUv09EF7E8DH0j HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 21:59:18] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=more.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:00:45] "GET /tournament/1?&__debugger__=yes&cmd=test%20%3D%20Display_Match(red_team%3D[get_char_name(p)%20for%20p%20in%20tournament.current_match.red_team_members.split(',')],%20red_team_name%3Dtournament.current_match.red_team_name,%20blue_team%3D[get_char_name(p)%20for%20p%20in%20tournament.current_match.blue_team_members.split(',')],%20blue_team_name%3Dtournament.current_match.blue_team_name)&frm=140524909013920&s=7McvS5EUv09EF7E8DH0j HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:00:50] "GET /tournament/1?&__debugger__=yes&cmd=test&frm=140524909013920&s=7McvS5EUv09EF7E8DH0j HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:01:07] "GET /tournament/1?&__debugger__=yes&cmd=test.red_team&frm=140524909013920&s=7McvS5EUv09EF7E8DH0j HTTP/1.1" 200 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:297: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 22:08:38] "[35m[1mGET /tournament/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 332, in display_tournament
+    return render_template("tournament.html",tournament=tournament, players=players, match=matches)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/disk1/data/git/eve-tournaments/templates/tournament.html", line 115, in top-level template code
+    {% for i in range(soloqueue.team_size) %}
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'soloqueue' is undefined
+127.0.0.1 - - [21/Sep/2024 22:08:38] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:08:38] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:08:39] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:08:43] "[35m[1mGET / HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 489, in index
+    return render_template('base.html')
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/loaders.py", line 137, in load
+    code = environment.compile(source, name, filename)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/disk1/data/git/eve-tournaments/templates/base.html", line 26, in template
+    {% if current_user.character_id == 1869635534 || current_user.character_id == 217590536 %}
+jinja2.exceptions.TemplateSyntaxError: expected token 'name', got '|'
+127.0.0.1 - - [21/Sep/2024 22:08:43] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:08:43] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:08:43] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:10:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:10:24] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:10:24] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:10:26] "[35m[1mGET /tournament/1 HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 332, in display_tournament
+    return render_template("tournament.html",tournament=tournament, players=players, match=matches)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/disk1/data/git/eve-tournaments/templates/tournament.html", line 115, in top-level template code
+    {% for i in range(soloqueue.team_size) %}
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'soloqueue' is undefined
+127.0.0.1 - - [21/Sep/2024 22:10:26] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:10:26] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:10:26] "[36mGET /tournament/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:10:51] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:10:51] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:297: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 22:16:25] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:16:25] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:16:27] "[35m[1mGET /declare_victory/1/red HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 359, in declare_victory
+    tournament.resove_match(team_name)
+AttributeError: 'SoloQueue' object has no attribute 'resove_match'
+127.0.0.1 - - [21/Sep/2024 22:16:28] "GET /declare_victory/1/red?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:16:28] "GET /declare_victory/1/red?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:16:28] "GET /declare_victory/1/red?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:16:28] "[36mGET /declare_victory/1/red?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+127.0.0.1 - - [21/Sep/2024 22:16:53] "[32mGET /declare_victory/1/red HTTP/1.1[0m" 302 -
+/disk1/data/git/eve-tournaments/app.py:297: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 22:16:53] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:16:53] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:16:56] "[32mGET /generate_match/1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:16:56] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:16:56] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:17:00] "[32mGET /declare_victory/1/blue HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:17:00] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:17:00] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:18:07] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:18:07] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:18:09] "[32mGET /close_tournament/1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:18:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:18:10] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:18:10] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:18:11] "[35m[1mGET /create_tournament HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/disk1/data/git/eve-tournaments/venv/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/disk1/data/git/eve-tournaments/app.py", line 374, in create_tournament
+    return redirect(url_for("display_tournament",tid=tournament.tournament_id))
+AttributeError: 'NoneType' object has no attribute 'tournament_id'
+127.0.0.1 - - [21/Sep/2024 22:18:12] "[36mGET /create_tournament?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:18:12] "[36mGET /create_tournament?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:18:12] "[36mGET /create_tournament?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [21/Sep/2024 22:18:44] "GET /create_tournament?&__debugger__=yes&cmd=dump%20tournament&frm=140435128647568&s=NzQsa1rvxXwmL3QsQLij HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:18:48] "GET /create_tournament?&__debugger__=yes&cmd=dump(tournament)&frm=140435128647568&s=NzQsa1rvxXwmL3QsQLij HTTP/1.1" 200 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:297: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 22:19:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:30] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:30] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:31] "GET /tournament/2 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:31] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:32] "[32mGET /close_tournament/2 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:19:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:34] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:34] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:35] "[32mGET /create_tournament HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:19:35] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:35] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:37] "[32mGET /join_lobby/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:19:37] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:37] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:39] "[32mGET /fill_lobby/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:19:39] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:39] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:41] "[32mGET /generate_match/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:19:41] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:41] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:42] "[32mGET /declare_victory/3/blue HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:19:42] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:42] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:46] "[32mGET /generate_match/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:19:46] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:46] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:48] "[32mGET /declare_victory/3/red HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:19:48] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:48] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:51] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:51] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:55] "[32mGET /generate_match/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:19:55] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:55] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:19:58] "[32mGET /declare_victory/3/red HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:19:58] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:19:58] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:20:48] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:20:48] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:20:51] "[32mGET /fill_lobby/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:20:51] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:20:51] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:20:54] "[32mGET /generate_match/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:20:54] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:20:54] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:20:57] "[32mGET /declare_victory/3/red HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:20:57] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:20:57] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:00] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:00] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:08] "[32mGET /close_tournament/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:21:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:09] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:09] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:11] "[32mGET /create_tournament HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:21:11] "GET /tournament/4 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:11] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:12] "[32mGET /join_lobby/4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:21:12] "GET /tournament/4 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:12] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:13] "[32mGET /generate_match/4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:21:13] "GET /tournament/4 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:13] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:15] "[32mGET /fill_lobby/4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:21:15] "GET /tournament/4 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:15] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:16] "[32mGET /generate_match/4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:21:16] "GET /tournament/4 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:17] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:18] "[32mGET /declare_victory/4/blue HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:21:18] "GET /tournament/4 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:18] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:46] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:46] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:58] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:58] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:21:59] "[32mGET /generate_match/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:21:59] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:21:59] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:22:01] "[32mGET /declare_victory/3/red HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:22:01] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:22:01] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:22:02] "[32mGET /generate_match/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:22:02] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:22:02] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:22:03] "[32mGET /declare_victory/3/red HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:22:03] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:22:03] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:22:04] "[32mGET /generate_match/3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:22:04] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:22:04] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:22:05] "[32mGET /declare_victory/3/red HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:22:05] "GET /tournament/3 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:22:05] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:22:08] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:22:08] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:297: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 22:26:11] "GET /tournament/1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:11] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:17] "GET /tournament/4 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:17] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:19] "[32mGET /generate_match/4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:19] "GET /tournament/4 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:19] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:21] "[32mGET /declare_victory/4/red HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:21] "GET /tournament/4 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:21] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:25] "[32mGET /close_tournament/4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:27] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:27] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:28] "[32mGET /create_tournament HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:28] "GET /tournament/5 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:28] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:31] "[32mGET /join_lobby/5 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:31] "GET /tournament/5 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:31] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:32] "[32mGET /fill_lobby/5 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:32] "GET /tournament/5 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:32] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:32] "[32mGET /generate_match/5 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:32] "GET /tournament/5 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:32] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:34] "[32mGET /declare_victory/5/blue HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:34] "GET /tournament/5 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:34] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:38] "[32mGET /generate_match/5 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:38] "GET /tournament/5 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:38] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:40] "[32mGET /declare_victory/5/red HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:40] "GET /tournament/5 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:26:40] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:26:42] "[32mGET /close_tournament/5 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:26:42] "GET / HTTP/1.1" 200 -
+ * Detected change in '/disk1/data/git/eve-tournaments/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 477-324-307
+/disk1/data/git/eve-tournaments/app.py:297: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  return User.query.get(character_id)
+127.0.0.1 - - [21/Sep/2024 22:28:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:28:41] "GET /demo HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:28:41] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:29:13] "[32mGET /create_tournament HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:29:13] "GET /tournament/6 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:29:13] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:31:18] "GET /tournament/6 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:31:18] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:31:19] "[32mGET /generate_match/6 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:31:19] "GET /tournament/6 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:31:19] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:31:22] "[32mGET /fill_lobby/6 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:31:22] "GET /tournament/6 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:31:22] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:31:24] "[32mGET /generate_match/6 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:31:24] "GET /tournament/6 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:31:24] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:33:18] "[32mGET /declare_victory/6/blue HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:33:18] "GET /tournament/6 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:33:18] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:34:37] "[32mGET /generate_match/6 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [21/Sep/2024 22:34:37] "GET /tournament/6 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:34:37] "[33mGET /tournament/styles.css HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Sep/2024 22:35:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Sep/2024 22:39:32] "GET / HTTP/1.1" 200 -

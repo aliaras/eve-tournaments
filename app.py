@@ -65,11 +65,12 @@ class Tournament(db.Model):
             db.Integer,
             primary_key=True,
             )
-    tournament_owner=db.Column(db.Integer, db.ForeignKey('user.character_id'), nullable=False)
+    #tournament_owner=db.Column(db.Integer, db.ForeignKey('user.character_id'), nullable=False)
     tournament_name = db.Column(db.String(255))
     tournament_description = db.Column(db.String(1024))
     tournament_url = db.Column(db.String(255))
     tournament_type = db.Column(db.String(40))
+    active = db.Column(db.Integer)
     current_match_id=db.Column(db.Integer, db.ForeignKey('match.match_id'), nullable=True)
     current_match=db.Relationship("Match", foreign_keys='Tournament.current_match_id')
     players = db.relationship('Player', foreign_keys='Player.tournament_id', backref='tournament')
@@ -127,9 +128,9 @@ class SoloQueue(Tournament):
 
     def pick_players_from_lobby(self):
        #Get all competitors in the tournament
-       lobby = Player.query.filter(Player.tournament_id == self.tournament_id, Player.active==1)
-       max_matches = db.session.query(func.max(Player.matches).filter(Player.active==1)).scalar()
-       min_matches = db.session.query(func.min(Player.matches).filter(Player.active==1)).scalar()
+       lobby = Player.query.filter(Player.tournament_id==self.tournament_id, Player.active==1)
+       max_matches = db.session.query(func.max(Player.matches).filter(Player.active==1),Player.tournament_id==self.tournament_id).scalar()
+       min_matches = db.session.query(func.min(Player.matches).filter(Player.active==1),Player.tournament_id==self.tournament_id).scalar()
        this_match_players = [] #list of Players
        # Turn the list of competitors into a dict of competitors grouped by number of matches played
        by_matches = {} #dict of Players
@@ -175,14 +176,14 @@ class SoloQueue(Tournament):
             raise Exception('BadWinningTeamName',winning_team_name)
 
         for character_id in self.current_match.get_red_players():
-           comp = Player.query.filter(Player.character_id == character_id and Player.tournament_id == self.tournament_id).first()
+           comp = Player.query.filter(Player.character_id == character_id,Player.tournament_id == self.tournament_id).first()
            comp.matches = comp.matches + 1
            if red_team_wins:
                comp.wins = comp.wins + 1
            db.session.merge(comp)
            
         for character_id in self.current_match.get_blue_players():
-           comp = Player.query.filter(Player.character_id == character_id and Player.tournament_id == self.tournament_id).first()
+           comp = Player.query.filter(Player.character_id == character_id,Player.tournament_id == self.tournament_id).first()
            if blue_team_wins:
                comp.wins = comp.wins + 1
            comp.matches = comp.matches + 1
@@ -201,6 +202,7 @@ class User(db.Model, UserMixin):
         autoincrement=False
     )
     character_owner_hash = db.Column(db.String(255))
+    character_name = db.Column(db.String(200))
 
     # SSO Token stuff
     access_token = db.Column(db.String(4096))
@@ -243,9 +245,48 @@ class Character(db.Model):
 # -----------------------------------------------------------------------
 # Helpers
 # -----------------------------------------------------------------------
+class Display_Player:
+    name = "placeholder"
+    matches = 0
+    wins = 0
+
+    def __init__(self, name, matches, wins):
+        self.name = name
+        self.matches = matches 
+        self.wins = wins
+
+
+class Display_Match:
+    red_team = ["placeholder"]
+    red_team_name = "placeholder"
+    blue_team = ["placeholder"]
+    blue_team_name = "placeholder"
+
+    def __init__(self, red_team, blue_team, blue_team_name="Blue placeholder", red_team_name="Red placeholder"):
+        self.red_team = red_team
+        self.red_team_name = red_team_name
+        self.blue_team = blue_team
+        self.blue_team_name = blue_team_name
 
 def get_current_tournaments():
-    return(Tournament.db.Query.all())
+    return(Tournament.query.filter(Tournament.active==1).all())
+
+
+def get_char_name(char_id):
+    try:
+        char = Character.query.filter(
+            Character.character_id == char_id
+        ).one()
+
+    except NoResultFound:
+        char = Character(character_id=char_id)
+        op = esiapp.op['characters_character_id'](character_id=char_id)
+        char_info = esiclient.request(op)
+        char.character_name = char_info.data.name
+        db.session.merge(char)
+        db.session.commit()
+
+    return char.character_name
 
 # -----------------------------------------------------------------------
 # Flask Login requirements
@@ -283,8 +324,62 @@ esiclient = EsiClient(
 # Just doing soloQ for now
 # -----------------------------------------------------------------------
 @app.route('/tournament/<int:tid>')
-def get_tournament(tid):
-    tournament = Tournament.query.filter_by('tournament_id' == tid).first()
+def display_tournament(tid):
+    tournament = SoloQueue.query.filter(SoloQueue.tournament_id==tid).first()
+    players = [Display_Player(name=get_char_name(p.character_id), matches=p.matches, wins=p.wins) for p in tournament.players]
+    if tournament.current_match is not None:
+        matches = Display_Match(red_team=[get_char_name(p) for p in tournament.current_match.red_team_members.split(',')], red_team_name=tournament.current_match.red_team_name, blue_team=[get_char_name(p) for p in tournament.current_match.blue_team_members.split(',')], blue_team_name=tournament.current_match.blue_team_name)
+        return render_template("tournament.html",tournament=tournament, players=players, match=matches)
+    else:
+        return render_template("tournament.html",tournament=tournament, players=players)
+
+@app.route('/join_lobby/<int:tid>')
+def join_lobby(tid):
+    tournament = SoloQueue.query.filter(SoloQueue.tournament_id==tid).first()
+    tournament.join_lobby(current_user.character_id)
+    return redirect(url_for("display_tournament",tid=tournament.tournament_id))
+
+@app.route('/leave_lobby/<int:tid>')
+def leave_lobby(tid):
+    tournament = SoloQueue.query.filter(SoloQueue.tournament_id==tid).first()
+    tournament.leave_lobby(current_user.character_id)
+    return redirect(url_for("display_tournament",tid=tournament.tournament_id))
+
+@app.route('/fill_lobby/<int:tid>')
+def fill_lobby(tid):
+    tournament = SoloQueue.query.filter(SoloQueue.tournament_id==tid).first()
+    tournament_players = [2113791869,90870204,2112657046,94546718,2119449883,2112676318,2122551208,2117249104,2118364597,975862704,2115476544,96894412,2117568225,96913527,1684204265,938041033,1869635534,93087693,1045876147,1353088896,95228453,2114159965,727382616]
+    for e in tournament_players:
+        tournament.join_lobby(e)
+    return redirect(url_for("display_tournament",tid=tournament.tournament_id))
+
+@app.route('/declare_victory/<int:tid>/<team_name>')
+def declare_victory(tid, team_name):
+    tournament = SoloQueue.query.filter(SoloQueue.tournament_id==tid).first()
+    tournament.resolve_match(team_name)
+    return redirect(url_for("display_tournament",tid=tournament.tournament_id))
+
+@app.route('/generate_match/<int:tid>')
+def generate_match(tid):
+    tournament = SoloQueue.query.filter(SoloQueue.tournament_id==tid).first()
+    tournament.create_match()
+    return redirect(url_for("display_tournament",tid=tournament.tournament_id))
+
+@app.route('/create_tournament')
+def create_tournament():
+    tournament = SoloQueue(tournament_name="Demo solo queue", tournament_description="Demo solo queue. Team size hardcoded to 7.", tournament_url="https://eveonline.com", tournament_type="soloq", team_size=7,active=1)
+    db.session.merge(tournament)
+    db.session.commit()
+    tournament = SoloQueue.query.filter(SoloQueue.tournament_name=="Demo solo queue", SoloQueue.active==1).first()
+    return redirect(url_for("display_tournament",tid=tournament.tournament_id))
+
+@app.route('/close_tournament/<int:tid>')
+def close_tournament(tid):
+    tournament = SoloQueue.query.filter(SoloQueue.tournament_id==tid).first()
+    tournament.active=0
+    db.session.merge(tournament)
+    db.session.commit()
+    return redirect(url_for("index"))
 
 # -----------------------------------------------------------------------
 # Login / Logout Routes
@@ -365,6 +460,7 @@ def callback():
         user.character_id = cdata['sub'].split(':')[2]
 
     user.character_owner_hash = cdata['owner']
+    user.character_name = cdata['name']
     character.character_name = cdata['name']
     user.update_token(auth_response)
 
@@ -395,22 +491,30 @@ def index():
         # give the token data to esisecurity, it will check alone
         # if the access token need some update
         esisecurity.update_token(current_user.get_sso_data())
-        current_tournaments = get_current_tournaments()
-    else:
-        current_tournaments = []
 
-    return render_template('base.html', current_tournaments=current_tournaments)
+    return render_template('base.html')
 
-@app.route('/debug')
-def debug():
-    test = SoloQueue.query.all()[0]
-    test.create_match()
-    test.resolve_match('red')
-    test.leave_lobby(18)
-    test.create_match()
-    test.resolve_match('blue')
-    test.join_lobby(18)
-    raise Exception("EverythingWorked","Sounds fake...")
+@app.route('/demo')
+def demo():
+    if current_user.is_authenticated:
+        # give the token data to esisecurity, it will check alone
+        # if the access token need some update
+        esisecurity.update_token(current_user.get_sso_data())
+        tournaments = get_current_tournaments()
+        return render_template('demo.html', current_tournaments=tournaments)
+    else: 
+      return render_template('base.html')
+
+#@app.route('/debug')
+#def debug():
+#    test = SoloQueue.query.all()[0]
+#    test.create_match()
+#    test.resolve_match('red')
+#    test.leave_lobby(18)
+#    test.create_match()
+#    test.resolve_match('blue')
+#    test.join_lobby(18)
+#    raise Exception("EverythingWorked","Sounds fake...")
 
 if __name__ == '__main__':
     app.run(port=config.PORT, host=config.HOST)

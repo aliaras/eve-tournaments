@@ -23,26 +23,7 @@
 Hello <strong>{{ current_user.character_name }}</strong><br>
 <br>
 <br>
-
-{% if length(current_tournaments) > 0 %}
-
-<strong>Current Tournaments:</strong>
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Description</th>
-	</tr>
-	{% for elem in current_tournaments %}
-	<tr>
-		<td><a href="{{ url_for('tournament', tid=elem.tournament_id }}">{{ elem.name }}</a></td>
-		<td>{{ elem.description }}</td>
-	</tr>
-	{% endfor %}
-</table>
-
-{% else %}
-<strong> No ongoing tournaments right now -- check back later! </strong>
-{% endif %}
+<a href="{{ url_for('demo') }}">Open Demo Page</a>
 <br>
 <br>
 <br>

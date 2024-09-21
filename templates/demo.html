@@ -63,7 +63,7 @@
     <meta name="author" content="Ali Aras">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <title>{{ tournament.tournament_name }}</title>
+    <title>Demo / Tournaments</title>
 </head>
 <body>
 {% if not current_user.is_authenticated %}
@@ -75,65 +75,20 @@
 Hello <strong>{{ current_user.character_name }}</strong><br>
 </div>
 <div class="container">
-<strong> Tournament: </strong> {{ tournament.tournament_name }}
-<br>
-{{ tournament.tournament_description }}
-<br>
-<a href="{{ tournament.tournament_url }}">Rules and more information</a>
+	<p>Demo page.</p>
 </div>
 <div class="container">
-	<form action="/join_lobby/{{tournament.tournament_id}}">
-		<button "btn btn-outline-success" type="submit">Add yourself to lobby</button>
-	</form>
-	<form action="/fill_lobby/{{tournament.tournament_id}}">
-		<button "btn btn-outline-success" type="submit">Fill Lobby</button>
-	</form>
-	{% if match is not defined %}
-	<form action="/generate_match/{{tournament.tournament_id}}">
-		<button "btn btn-outline-success" type="submit">Generate Match</button>
-	</form>
-	{% endif %}
-	<form action="/close_tournament/{{tournament.tournament_id}}">
-                <button "btn btn-outline-success" type="submit">Close Tournament</button>
-        </form>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-3">
-			<!-- lobby div -->	
-			{% if players.length == 0 %}
-			<p>Nobody is in the lobby yet!</p>
-			{% else %}
-			<table>
-				<th><td>Player Name</td><td>Matches played</td><td>Wins</td></th>
-				{% for p in players %}
-				<tr><td>{{ p.name }}</td><td>{{ p.matches }}</td><td>{{ p.wins }}</td></tr>
-				{% endfor %}
-			</table>
-			{% endif %}
-		</div>
-		<div class="col-9">
-			<!-- rest of tournament div -->	
-			{% if match is defined and match %}
-			<table>
-			<th><td class="danger">Red Team</td><td class="success">Blue Team</td></th>
-			{% for i in range(tournament.team_size) %}
-			<tr><td class="danger">{{ match.red_team[i] }}</td><td class="success">{{ match.blue_team[i] }}</td></tr>
-			{% endfor %}
-			</table>
-			<form action="/declare_victory/{{tournament.tournament_id}}/{{ match.red_team_name }}">
-				<button "btn btn-outline-success" type="submit">Red team wins!</button>
-			</form>
-			<form action="/declare_victory/{{tournament.tournament_id}}/{{ match.blue_team_name }}">
-				<button "btn btn-outline-success" type="submit">Blue team wins!</button>
-			</form>
-			{% else %}
-			<p>No current match!</p>
-			{% endif %}
-		</div>
+{% if current_tournaments|length == 0 %}
+<a href="{{ url_for('create_tournament') }}">Create Tournament</a>
 
-	</div>
-
+<!--        <form action="/create_tournament">
+		<button class="btn btn-outline-success">Create New Tournament</button>
+</form>-->
+{% else %}
+ {% for t in current_tournaments %}
+    <a href="{{ url_for('display_tournament', tid=t.tournament_id) }}">Open {{t.tournament_name}}</a>
+ {% endfor %}
+{% endif %}
 </div>
 
 <a href="{{ url_for('logout') }}">Logout</a>
