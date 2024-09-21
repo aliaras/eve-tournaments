@@ -65,6 +65,7 @@ class Tournament(db.Model):
             db.Integer,
             primary_key=True,
             )
+    tournament_owner=db.Column(db.Integer, db.ForeignKey('user.character_id'), nullable=False)
     tournament_name = db.Column(db.String(255))
     tournament_description = db.Column(db.String(1024))
     tournament_url = db.Column(db.String(255))
@@ -118,18 +119,17 @@ class SoloQueue(Tournament):
     
     # We leave lobbies by setting the player's active flag to 0. This allows them to rejoin with their metadata intact.
     def leave_lobby(self, character):
-        lobby_member = self.players.query().filter_by(character_id=character)
-
-        #TODO - throw exception if None.
-        if lobby_member is not None:
-            lobby_member.active = 0
-            db.session.merge(lobby_member)
-            db.session.commit()
+        lobby_member_list = [s for s in self.players if s.character_id==character]
+        lobby_member = lobby_member_list[0]
+        lobby_member.active = 0
+        db.session.merge(lobby_member)
+        db.session.commit()
 
     def pick_players_from_lobby(self):
        #Get all competitors in the tournament
        lobby = Player.query.filter(Player.tournament_id == self.tournament_id, Player.active==1)
-       max_matches = db.session.query(func.max(Player.matches)).all()[0][0]
+       max_matches = db.session.query(func.max(Player.matches).filter(Player.active==1)).scalar()
+       min_matches = db.session.query(func.min(Player.matches).filter(Player.active==1)).scalar()
        this_match_players = [] #list of Players
        # Turn the list of competitors into a dict of competitors grouped by number of matches played
        by_matches = {} #dict of Players
@@ -142,22 +142,24 @@ class SoloQueue(Tournament):
        #Starting with the list of players who have played the fewest matches, shuffle the list of 
        #players at a given match count, take the first 2*self.team_size (aka enough to make a match)
        #then keep going if we don't have a full match yet
-       for i in range(max_matches):
+       for i in range(min_matches, max_matches + 1):
            if(len(this_match_players) < 2*self.team_size):
                random.shuffle(by_matches[i])
-               this_match_players = this_match_players, by_matches[i][0:2*self.team_size - len(this_match_players)]
+               this_match_players.extend(by_matches[i][0:2*self.team_size - len(this_match_players)])
 
        #Shuffle our list of players again and return it. The caller will use the first team_size elements as red team,
        #and the remainder as blue team.
-       return random.shuffle(this_match_players) #returns a list of Players
+
+       random.shuffle(this_match_players)
+       return this_match_players #returns a list of Players
 
     def create_match(self):
         if(Player.query.filter(Player.tournament_id==self.tournament_id,Player.active==1).count() < self.team_size*2):
             #TODO throw some exception or smth
             return
         this_match_players = self.pick_players_from_lobby() #Players, shuffled.
-        red_team_str = [p.character_id for p in this_match_players[0:self.team_size]].join(',')
-        blue_team_str = [p.character_id for p in this_match_players[self.team_size:self.team_size*2]].join(',')
+        red_team_str = ','.join([str(p.character_id) for p in this_match_players[0:self.team_size]])
+        blue_team_str = ','.join([str(p.character_id) for p in this_match_players[self.team_size:self.team_size*2]])
         match = Match(tournament_id=self.tournament_id, red_team_name='red', red_team_members=red_team_str, blue_team_name='blue', blue_team_members = blue_team_str)
         self.current_match = match
         db.session.merge(match)
@@ -165,14 +167,24 @@ class SoloQueue(Tournament):
         db.session.commit()
 
 
-    def resolve_match(self):
+    def resolve_match(self, winning_team_name):
+        match = self.current_match
+        blue_team_wins = self.current_match.blue_team_name == winning_team_name
+        red_team_wins = self.current_match.red_team_name == winning_team_name
+        if(blue_team_wins == red_team_wins):
+            raise Exception('BadWinningTeamName',winning_team_name)
+
         for character_id in self.current_match.get_red_players():
            comp = Player.query.filter(Player.character_id == character_id and Player.tournament_id == self.tournament_id).first()
            comp.matches = comp.matches + 1
+           if red_team_wins:
+               comp.wins = comp.wins + 1
            db.session.merge(comp)
            
-        for competitor_id in self.current_match.get_blue_players():
+        for character_id in self.current_match.get_blue_players():
            comp = Player.query.filter(Player.character_id == character_id and Player.tournament_id == self.tournament_id).first()
+           if blue_team_wins:
+               comp.wins = comp.wins + 1
            comp.matches = comp.matches + 1
            db.session.merge(comp)
 
@@ -389,6 +401,16 @@ def index():
 
     return render_template('base.html', current_tournaments=current_tournaments)
 
+@app.route('/debug')
+def debug():
+    test = SoloQueue.query.all()[0]
+    test.create_match()
+    test.resolve_match('red')
+    test.leave_lobby(18)
+    test.create_match()
+    test.resolve_match('blue')
+    test.join_lobby(18)
+    raise Exception("EverythingWorked","Sounds fake...")
 
 if __name__ == '__main__':
     app.run(port=config.PORT, host=config.HOST)
