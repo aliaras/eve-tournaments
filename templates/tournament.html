@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="G. (Kyria) Bisch">
 
-    <title>Hello World: Eve Tournaments</title>
+    <title>{{ tournament.tournament_name }}</title>
 
 </head>
 
@@ -21,6 +21,13 @@
 
 {% else %}
 Hello <strong>{{ current_user.character_name }}</strong><br>
+<br>
+<br>
+<strong> Tournament: </strong> {{ tournament.tournament_name }}
+<br>
+{{ tournament.tournament_description }}
+<br>
+<a href="{{ tournament.tournament_url }}">Rules and more information</a>
 <br>
 <br>
 

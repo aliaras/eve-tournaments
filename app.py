@@ -23,6 +23,8 @@ from flask_login import logout_user
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy import UniqueConstraint
+from sqlalchemy import func
 
 import config
 import hashlib
@@ -67,42 +69,70 @@ class Tournament(db.Model):
     tournament_description = db.Column(db.String(1024))
     tournament_url = db.Column(db.String(255))
     tournament_type = db.Column(db.String(40))
-    competitors = db.relationship('Competitor', backref='tournament', lazy=True)
+    current_match_id=db.Column(db.Integer, db.ForeignKey('match.match_id'), nullable=True)
+    current_match=db.Relationship("Match", foreign_keys='Tournament.current_match_id')
+    players = db.relationship('Player', foreign_keys='Player.tournament_id', backref='tournament')
     team_size = db.Column(db.Integer)
+    matches = db.relationship('Match', foreign_keys='Match.tournament_id', backref='tournament')
 
-class Team(db.Model):
-    team_id = db.Column(
-            db.Integer,
-            primary_key=True,
-            )
-    captain = db.Column(db.BigInteger, db.ForeignKey('User.character_id'), nullable=False)
-    name = db.Column(db.String(255))
-    members = db.relationship('Character', backref='team', lazy=True)
+class Match(db.Model):
+    match_id = db.Column(db.Integer, primary_key=True)
+    tournament_id = db.Column(db.Integer, db.ForeignKey('tournament.tournament_id'), nullable=False)
+    red_team_name = db.Column(db.String(255))
+    red_team_members = db.Column(db.String(2048)) #a list of character ids, comma separated
+    blue_team_name = db.Column(db.String(255)) #a list of character ids, comma separated
+    blue_team_members = db.Column(db.String(2048))
 
+    #returns a list of character ids
+    def get_red_players(self):
+        return(self.red_team_members.split(','))
 
-class Competitor(db.Model):
-    team_id = db.Column(db.Integer, db.ForeignKey('Team.team_id'), nullable=False)
-    tournament_id = db.Column(db.Integer, db.ForeignKey('Tournament.tournament_id'), nullable=False)
+    def get_blue_players(self):
+        return(self.blue_team_members.split(','))
+
+class Player(db.Model):
+    competitor_id = db.Column(db.Integer, primary_key=True)
+    character_id = db.Column(db.Integer)
+    tournament_id = db.Column(db.Integer, db.ForeignKey('tournament.tournament_id'), nullable=False)
+    active = db.Column(db.Integer)
     wins = db.Column(db.Integer)
     losses = db.Column(db.Integer)
     matches = db.Column(db.Integer)
 
-soloq_lobby = db.Table("soloq_lobby", 
-                      db.Column("team_id", db.ForeignKey('Team.team_id'), primary_key=True),
-                      db.Column("tournament_id", db.ForeignKey('Tournament.tournament_id'), nullable=False)
-                       )                                
-
 class SoloQueue(Tournament):
+    def join_lobby(self, character):
+        lobby_member_list = [s for s in self.players if s.character_id==character]
 
-   def open_lobby(self):
-   
-   def create_match(self):
+        #if this is a new entrant, create a Player record for them
+        if len(lobby_member_list) == 0:
+            lobby_member = Player(character_id=character,tournament_id=self.tournament_id,active=1,wins=0,losses=0,matches=0)
+
+        #If they were inactive, set them back to active. If they were already active & in the tournament, this is a no-op
+        elif len(lobby_member_list) == 1:
+            lobby_member = lobby_member_list[0]
+            lobby_member.active = 1
+
+        #TODO complain if there's >1 entry in the lobby for this character
+        db.session.merge(lobby_member)
+        db.session.commit()
+    
+    # We leave lobbies by setting the player's active flag to 0. This allows them to rejoin with their metadata intact.
+    def leave_lobby(self, character):
+        lobby_member = self.players.query().filter_by(character_id=character)
+
+        #TODO - throw exception if None.
+        if lobby_member is not None:
+            lobby_member.active = 0
+            db.session.merge(lobby_member)
+            db.session.commit()
+
+    def pick_players_from_lobby(self):
        #Get all competitors in the tournament
-       lobby = Competitor.query.filter(Competitor.tournament_id == self.tournament_id)
-       max_matches = Competitor.query(func.max(Competitor.matches))
-       this_match_players = []
+       lobby = Player.query.filter(Player.tournament_id == self.tournament_id, Player.active==1)
+       max_matches = db.session.query(func.max(Player.matches)).all()[0][0]
+       this_match_players = [] #list of Players
        # Turn the list of competitors into a dict of competitors grouped by number of matches played
-       by_matches = {}
+       by_matches = {} #dict of Players
        for elem in lobby:
            try:
                by_matches[elem.matches].append(elem)
@@ -119,17 +149,37 @@ class SoloQueue(Tournament):
 
        #Shuffle our list of players again and return it. The caller will use the first team_size elements as red team,
        #and the remainder as blue team.
-       return random.shuffle(this_match_players)
+       return random.shuffle(this_match_players) #returns a list of Players
 
-    
-class Character(db.Model):
-    character_id = db.Column(
-        db.BigInteger,
-        primary_key=True,
-        autoincrement=False
-    )
-    user_id = db.Column(db.BigInteger, db.ForeignKey('User.id'), nullable=True)
-    character_name = db.Column(db.String(200))
+    def create_match(self):
+        if(Player.query.filter(Player.tournament_id==self.tournament_id,Player.active==1).count() < self.team_size*2):
+            #TODO throw some exception or smth
+            return
+        this_match_players = self.pick_players_from_lobby() #Players, shuffled.
+        red_team_str = [p.character_id for p in this_match_players[0:self.team_size]].join(',')
+        blue_team_str = [p.character_id for p in this_match_players[self.team_size:self.team_size*2]].join(',')
+        match = Match(tournament_id=self.tournament_id, red_team_name='red', red_team_members=red_team_str, blue_team_name='blue', blue_team_members = blue_team_str)
+        self.current_match = match
+        db.session.merge(match)
+        db.session.merge(self)
+        db.session.commit()
+
+
+    def resolve_match(self):
+        for character_id in self.current_match.get_red_players():
+           comp = Player.query.filter(Player.character_id == character_id and Player.tournament_id == self.tournament_id).first()
+           comp.matches = comp.matches + 1
+           db.session.merge(comp)
+           
+        for competitor_id in self.current_match.get_blue_players():
+           comp = Player.query.filter(Player.character_id == character_id and Player.tournament_id == self.tournament_id).first()
+           comp.matches = comp.matches + 1
+           db.session.merge(comp)
+
+        self.current_match = None
+        db.session.merge(self)
+        db.session.commit()
+
 
 class User(db.Model, UserMixin):
     # our ID is the character ID from EVE API
@@ -170,6 +220,21 @@ class User(db.Model, UserMixin):
             self.refresh_token = token_response['refresh_token']
 
 
+class Character(db.Model):
+    character_id = db.Column(
+        db.BigInteger,
+        primary_key=True,
+        autoincrement=False
+    )
+    character_name = db.Column(db.String(200))
+
+# -----------------------------------------------------------------------
+# Helpers
+# -----------------------------------------------------------------------
+
+def get_current_tournaments():
+    return(Tournament.db.Query.all())
+
 # -----------------------------------------------------------------------
 # Flask Login requirements
 # -----------------------------------------------------------------------
@@ -200,6 +265,14 @@ esiclient = EsiClient(
     headers={'User-Agent': config.ESI_USER_AGENT}
 )
 
+
+# -----------------------------------------------------------------------
+# Individual Tournament Route
+# Just doing soloQ for now
+# -----------------------------------------------------------------------
+@app.route('/tournament/<int:tid>')
+def get_tournament(tid):
+    tournament = Tournament.query.filter_by('tournament_id' == tid).first()
 
 # -----------------------------------------------------------------------
 # Login / Logout Routes
@@ -278,7 +351,6 @@ def callback():
     except NoResultFound:
         user = User()
         user.character_id = cdata['sub'].split(':')[2]
-        character.user_id = user.character_id
 
     user.character_owner_hash = cdata['owner']
     character.character_name = cdata['name']
@@ -307,15 +379,15 @@ def callback():
 @app.route('/')
 def index():
 
-    # if the user is authed, get the wallet content !
     if current_user.is_authenticated:
         # give the token data to esisecurity, it will check alone
         # if the access token need some update
         esisecurity.update_token(current_user.get_sso_data())
+        current_tournaments = get_current_tournaments()
+    else:
+        current_tournaments = []
 
-
-    return render_template('base.html', **{
-    })
+    return render_template('base.html', current_tournaments=current_tournaments)
 
 
 if __name__ == '__main__':
